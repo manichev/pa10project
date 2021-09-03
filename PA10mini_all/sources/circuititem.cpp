@@ -137,8 +137,8 @@ QRectF CircuitItem::contactRect()
 int CircuitItem::contact(QPointF pos)
 {
     for(int i = 0; i < contacts.size(); ++i)
-    if(contactRect().translated(contacts[i]).contains(mapFromScene(pos)))
-        return i;
+        if(contactRect().translated(contacts[i]).contains(mapFromScene(pos)))
+            return i;
     return -1;
 }
 
