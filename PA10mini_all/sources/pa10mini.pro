@@ -30,6 +30,9 @@ CONFIG += qwt
 # dlfcn-win32 is an implementation of dlfcn for Windows: git@github.com:dlfcn-win32/dlfcn-win32.git
 windows: LIBDL_BUILD_DIR = "D:/workspace/github/build-dlfcn-win32-Qt_5_14_1_MinGW_64_bit-Debug"
 windows: LIBS += $$LIBDL_BUILD_DIR/lib/libdl.dll.a
+#unix: LIBS += -L/libdl
+unix: LIBS += -ldl
+unix: LIBS += -L/lib -lqwt
 
 # You can also make your code fail to compile if you use deprecated APIs.
 # In order to do so, uncomment the following line.
