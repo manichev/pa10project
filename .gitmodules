@@ -1,0 +1,4 @@
+[submodule "PA10mini_all/QCustomPlot"]
+	path = PA10mini_all/QCustomPlot
+	url = git@github.com:eugesh/QCustomPlot.git
+	branch = dev
