@@ -13,7 +13,8 @@
 #include "C:\qwt\src\qwt_text.h"
 #include "C:\qwt\src\qwt_symbol.h"
 #include "C:\qwt\src\qwt_math.h"*/
-#include "qwt_legend.h"
+#include "qcustomplot.h"
+/*#include "qwt_legend.h"
 #include "qwt_plot.h"
 #include "qwt_plot_grid.h"
 #include "qwt_plot_curve.h"
@@ -25,7 +26,7 @@
 #include "qwt_plot_magnifier.h"
 #include "qwt_text.h"
 #include "qwt_symbol.h"
-#include "qwt_math.h"
+#include "qwt_math.h"*/
 #include <qlayout.h>
 #include <math.h>
 #include <QFont>
@@ -33,7 +34,7 @@
 
 #include <solver.h>
 
-class FunctionData: public QwtSyntheticPointData
+/*class FunctionData: public QwtSyntheticPointData
 {
 public:
     FunctionData( double( *y )( double ) ):
@@ -49,13 +50,13 @@ public:
 
 private:
     double( *d_y )( double );
-};
+};*/
 
 
-class Plot : public QwtPlot
+class Plot : public QCustomPlot
 {
 public:
-    Plot( QWidget *parent = NULL );
+    Plot(QWidget *parent = nullptr);
     /*
     number of curves
     curves data with double arrays n curves + 1
@@ -64,9 +65,28 @@ public:
 public slots:
     void populate();
 protected:
+    virtual void resizeEvent(QResizeEvent *);
+
+private:
+
+    void updateGradient();
+};
+
+/*class Plot : public QwtPlot
+{
+public:
+    Plot( QWidget *parent = NULL );
+
+    // number of curves
+    // curves data with double arrays n curves + 1
+    // length of arrays
+
+public slots:
+    void populate();
+protected:
     virtual void resizeEvent( QResizeEvent * );
 
 private:
     
     void updateGradient();
-};
+};*/

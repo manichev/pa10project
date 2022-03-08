@@ -5,14 +5,15 @@
 TEMPLATE = app
 TARGET = pa10mini
 
-windows: QWT_DIR = "C:/Qwt-6.1.4"
+#windows: QWT_DIR = "C:/Qwt-6.1.4"
 
 INCLUDEPATH += .
-windows: INCLUDEPATH += $$QWT_DIR/include
-windows: INCLUDEPATH += D:/workspace/github/dlfcn-win32/src
-unix: INCLUDEPATH += /usr/include/qwt
+INCLUDEPATH += ../QCustomPlot
+#windows: INCLUDEPATH += $$QWT_DIR/include
+#windows: INCLUDEPATH += D:/workspace/github/dlfcn-win32/src
+#unix: INCLUDEPATH += /usr/include/qwt
 
-QT += core widgets opengl gui
+QT += core widgets opengl gui printsupport
 
 CONFIG += c++14
 
@@ -24,8 +25,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 windows: DEFINES += _WINDOWS
 
 # QWT
-windows: include ( $$QWT_DIR/features/qwt.prf )
-CONFIG += qwt
+#windows: include ( $$QWT_DIR/features/qwt.prf )
+#include ( /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qwt.prf)
+#CONFIG += qwt
 
 # dlfcn-win32 is an implementation of dlfcn for Windows: git@github.com:dlfcn-win32/dlfcn-win32.git
 windows: {
@@ -38,7 +40,7 @@ mingw: {
 }
 }
 unix: LIBS += -ldl
-unix: LIBS += -L/usr/lib -lqwt-qt5
+#unix: LIBS += -L/usr/lib -lqwt-qt5
 #windows: LIBS += $$LIBDL_BUILD_DIR/lib/libdl.dll.a
 
 # You can also make your code fail to compile if you use deprecated APIs.
@@ -73,7 +75,8 @@ HEADERS += circuititem.h \
            equaledit.h \
            schemeview.h \
            plot.h \
-           FlexLexer.h
+           FlexLexer.h \
+           ../QCustomPlot/qcustomplot.h
 
 FORMS += circuititemedit.ui \
          pax_prototype.ui \
@@ -99,6 +102,7 @@ SOURCES += circuititem.cpp \
            solverparam.cpp \
            textdriver.cpp \
            variablechooser.cpp \
-           manzhuk/manzhuk.cpp
+           manzhuk/manzhuk.cpp \
+           ../QCustomPlot/qcustomplot.cpp
 
 RESOURCES += pax_prototype.qrc
