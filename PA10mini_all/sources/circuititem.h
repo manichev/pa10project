@@ -128,6 +128,18 @@ private:
     QPen pen;
 };
 
+class CircuitWireItem : public QGraphicsItem {
+public:
+    CircuitWireItem();
+    ~CircuitWireItem();
+
+protected:
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;
+
+private:
+    QVector<QPointF> m_coords;
+};
+
 class RItem : public CircuitItem
 {
 public:

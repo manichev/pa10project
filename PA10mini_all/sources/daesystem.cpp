@@ -89,17 +89,18 @@ void DAESystem::addEqual(Expression* equal)
 void DAESystem::setInitial(string& name, double value)
 {
     std::list<Variable>::iterator it;
-    for (it = variables.begin(); it != variables.end(); ++it)
+
+    for (it = variables.begin(); it != variables.end(); ++it) {
         if (it->name.compare(name) == 0)
             it->initial = value;
 }
-
 
 //sort variables
 bool compareTypes(Variable first, Variable second)
 {
     return first.isDerivative > second.isDerivative;
 }
+
 bool compareNames(Variable first, Variable second)
 {
     return first.name < second.name;
@@ -140,16 +141,12 @@ int DAESystem::countEquals()
 
 void DAESystem::updateExprIds(Expression* expr)
 {
-    if (expr!=0)
-    {
-        if (expr->type == _variable)
-        {
+    if (expr!=0) {
+        if (expr->type == _variable) {
             std::list<Variable>::iterator it;
             int count = 1;
-            for (it = variables.begin(); it != variables.end(); ++it)
-            {
-                if (it->id == expr->id || it->id == -expr->id)
-                {
+            for (it = variables.begin(); it != variables.end(); ++it) {
+                if (it->id == expr->id || it->id == -expr->id) {
                     expr->id = (expr->id<0)?-count:count;
                     break;
                 }
@@ -165,15 +162,14 @@ void DAESystem::updateExprIds(Expression* expr)
 void DAESystem::updateAllIds()
 {
     sortVariables();
+
     std::list<Expression*>::iterator eqIt;
     for (eqIt = equals.begin(); eqIt != equals.end(); ++eqIt)
-    {
         updateExprIds(*eqIt);
-    }
+
     std::list<Variable>::iterator it;
     int count = 1;
-    for (it = variables.begin(); it != variables.end(); ++it)
-    {
+    for (it = variables.begin(); it != variables.end(); ++it) {
             it->id = count;
             count++;
     }
