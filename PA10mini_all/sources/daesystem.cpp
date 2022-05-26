@@ -90,7 +90,7 @@ void DAESystem::setInitial(string& name, double value)
 {
     std::list<Variable>::iterator it;
 
-    for (it = variables.begin(); it != variables.end(); ++it) {
+    for (it = variables.begin(); it != variables.end(); ++it)
         if (it->name.compare(name) == 0)
             it->initial = value;
 }
