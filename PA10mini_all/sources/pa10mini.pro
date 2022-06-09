@@ -5,7 +5,6 @@
 TEMPLATE = app
 TARGET = pa10mini
 
-#windows: QWT_DIR = "C:/Qwt-6.1.4"
 windows: mingw: {
 QWT_DIR = "C:/Qwt-6.2.0"
 } else {
@@ -14,8 +13,7 @@ QWT_DIR = "C:/Qwt-6.2.0-msvc"
 
 INCLUDEPATH += .
 windows: INCLUDEPATH += $$QWT_DIR/include
-#windows: INCLUDEPATH += D:/workspace/github/dlfcn-win32/src
-windows: INCLUDEPATH += C:\Users\ASUS\workspace\github\dlfcn-win32\src
+windows: INCLUDEPATH += D:\workspace\dlfcn-win32\src
 unix: INCLUDEPATH += /usr/include/qwt
 
 QT += core widgets opengl gui
@@ -36,8 +34,7 @@ CONFIG += qwt
 # dlfcn-win32 is an implementation of dlfcn for Windows: git@github.com:dlfcn-win32/dlfcn-win32.git
 windows: {
 mingw: {
-    #LIBDL_BUILD_DIR = "D:/workspace/github/build-dlfcn-win32-Qt_5_14_1_MinGW_64_bit-Debug"
-    LIBDL_BUILD_DIR = "C:/Users/ASUS/workspace/github/build-dlfcn-win32-Desktop_Qt_5_15_2_MinGW_64_bit-Release"
+    LIBDL_BUILD_DIR = "D:\workspace\build-dlfcn-win32-Desktop_Qt_5_15_2_MinGW_64_bit-Debug"
     LIBS += $$LIBDL_BUILD_DIR/lib/libdl.dll.a
     LIBS += $$LIBDL_BUILD_DIR/bin/libdl.dll
 } else {
